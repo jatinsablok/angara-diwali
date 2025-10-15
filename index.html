@@ -155,45 +155,43 @@
             text-shadow: 0 0 15px #ffd700;
         }
 
-        /* Realistic Diya lights */
+        /* Diya lights */
         .diyas-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 50px;
             margin: 50px 0;
             flex-wrap: wrap;
             align-items: flex-end;
+            perspective: 1000px;
         }
 
         .diya {
-            width: 120px;
-            height: 90px;
+            width: 100px;
+            height: 70px;
             position: relative;
-            animation: subtleFloat 6s ease-in-out infinite;
+            animation: diyaFloat 4s ease-in-out infinite;
+            transform-style: preserve-3d;
         }
 
         .diya-body {
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(0, 0, 0, 0.2) 0%, transparent 50%),
-                linear-gradient(145deg, 
-                    #8B4513 0%, 
-                    #A0522D 15%, 
-                    #CD853F 30%, 
-                    #DEB887 50%, 
-                    #F4A460 70%, 
-                    #D2B48C 85%, 
+            background: linear-gradient(145deg,
+                    #D2691E 0%,
+                    #CD853F 20%,
+                    #DEB887 40%,
+                    #F4A460 60%,
+                    #D2B48C 80%,
                     #BC8F8F 100%);
-            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            border-radius: 50% 50% 50% 50% / 75% 75% 25% 25%;
             position: relative;
-            box-shadow: 
-                0 12px 30px rgba(0, 0, 0, 0.4),
-                inset 0 10px 25px rgba(255, 255, 255, 0.15),
-                inset 0 -10px 20px rgba(0, 0, 0, 0.3),
-                0 0 40px rgba(255, 165, 0, 0.3);
-            border: 2px solid #654321;
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                inset 0 8px 20px rgba(255, 255, 255, 0.2),
+                inset 0 -8px 15px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(255, 165, 0, 0.4);
+            border: 3px solid #8B4513;
         }
 
         .diya-body::before {
@@ -229,26 +227,23 @@
 
         .diya-flame {
             position: absolute;
-            top: -30px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 25px;
-            background: 
-                radial-gradient(ellipse at center bottom, 
-                    #FFF8DC 0%, 
-                    #FFD700 20%, 
-                    #FFA500 40%, 
-                    #FF6347 70%, 
+            width: 16px;
+            height: 20px;
+            background: radial-gradient(ellipse at center bottom,
+                    #FFD700 0%,
+                    #FFA500 30%,
+                    #FF6347 60%,
                     #DC143C 100%);
-            border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
-            animation: realisticFlame 2s ease-in-out infinite alternate;
-            box-shadow: 
-                0 0 30px #FFD700,
-                0 0 40px #FFA500,
-                0 0 50px #FF6347,
-                0 0 60px #DC143C;
-            filter: blur(0.5px);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flameDance 1.5s ease-in-out infinite alternate;
+            box-shadow:
+                0 0 25px #FFD700,
+                0 0 35px #FFA500,
+                0 0 45px #FF6347,
+                0 0 55px #DC143C;
         }
 
         .diya-flame::before {
@@ -310,30 +305,34 @@
         }
 
         @keyframes subtleFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg); 
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
             }
-            50% { 
-                transform: translateY(-5px) rotate(0.5deg); 
+
+            50% {
+                transform: translateY(-5px) rotate(0.5deg);
             }
         }
 
-        @keyframes realisticFlame {
-            0% { 
-                transform: translateX(-50%) scale(1) rotate(-2deg); 
-                box-shadow: 
-                    0 0 30px #FFD700,
-                    0 0 40px #FFA500,
-                    0 0 50px #FF6347,
-                    0 0 60px #DC143C;
+        @keyframes flameDance {
+            0% {
+                transform: translateX(-50%) scale(1) rotate(-3deg);
+                box-shadow:
+                    0 0 25px #FFD700,
+                    0 0 35px #FFA500,
+                    0 0 45px #FF6347,
+                    0 0 55px #DC143C;
             }
-            100% { 
-                transform: translateX(-50%) scale(1.1) rotate(2deg); 
-                box-shadow: 
-                    0 0 40px #FFD700,
-                    0 0 50px #FFA500,
-                    0 0 60px #FF6347,
-                    0 0 70px #DC143C;
+
+            100% {
+                transform: translateX(-50%) scale(1.2) rotate(3deg);
+                box-shadow:
+                    0 0 35px #FFD700,
+                    0 0 45px #FFA500,
+                    0 0 55px #FF6347,
+                    0 0 65px #DC143C;
             }
         }
 
@@ -663,37 +662,34 @@
             }
         }
 
-        /* Realistic Crackers */
+        /* Crackers */
         .crackers-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             margin: 40px 0;
             flex-wrap: wrap;
             align-items: flex-end;
         }
 
         .cracker {
-            width: 60px;
-            height: 120px;
-            background: 
-                linear-gradient(180deg,
-                    #8B0000 0%,
-                    #DC143C 15%,
-                    #FF1493 30%,
-                    #FF69B4 50%,
-                    #FFB6C1 70%,
-                    #FFC0CB 85%,
+            width: 50px;
+            height: 100px;
+            background: linear-gradient(180deg,
+                    #DC143C 0%,
+                    #FF1493 20%,
+                    #FF69B4 40%,
+                    #FFB6C1 60%,
+                    #FFC0CB 80%,
                     #FFF0F5 100%);
-            border-radius: 10px;
+            border-radius: 8px;
             position: relative;
-            animation: gentleSway 4s ease-in-out infinite;
+            animation: bounce 2.5s infinite;
             box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.3),
-                inset 0 5px 15px rgba(255, 255, 255, 0.2),
-                inset 0 -5px 15px rgba(0, 0, 0, 0.2),
-                0 0 20px rgba(255, 20, 147, 0.4);
-            border: 3px solid #8B0000;
+                0 0 20px rgba(255, 20, 147, 0.6),
+                inset 0 0 10px rgba(255, 255, 255, 0.3),
+                inset 0 0 20px rgba(255, 182, 193, 0.4);
+            border: 2px solid #B22222;
         }
 
         .cracker::before {
@@ -746,22 +742,23 @@
             animation: sparkleEffect 0.5s infinite;
         }
 
-        @keyframes gentleSway {
-            0%, 100% { 
-                transform: translateY(0) rotate(-0.5deg); 
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-1deg);
                 box-shadow:
-                    0 8px 25px rgba(0, 0, 0, 0.3),
-                    inset 0 5px 15px rgba(255, 255, 255, 0.2),
-                    inset 0 -5px 15px rgba(0, 0, 0, 0.2),
-                    0 0 20px rgba(255, 20, 147, 0.4);
+                    0 0 20px rgba(255, 20, 147, 0.6),
+                    inset 0 0 10px rgba(255, 255, 255, 0.3),
+                    inset 0 0 20px rgba(255, 182, 193, 0.4);
             }
-            50% { 
-                transform: translateY(-8px) rotate(0.5deg); 
+
+            50% {
+                transform: translateY(-15px) rotate(1deg);
                 box-shadow:
-                    0 12px 30px rgba(0, 0, 0, 0.4),
-                    inset 0 8px 20px rgba(255, 255, 255, 0.25),
-                    inset 0 -8px 20px rgba(0, 0, 0, 0.25),
-                    0 0 25px rgba(255, 20, 147, 0.5);
+                    0 0 30px rgba(255, 20, 147, 0.8),
+                    inset 0 0 15px rgba(255, 255, 255, 0.4),
+                    inset 0 0 25px rgba(255, 182, 193, 0.6);
             }
         }
 
