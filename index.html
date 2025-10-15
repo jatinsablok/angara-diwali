@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angara Diwali Celebration - Festival of Lights</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,8 +18,8 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: radial-gradient(ellipse at center, #0a0a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
         }
 
@@ -87,45 +90,47 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
-        /* Container */
-        .container {
+        /* Main Container - Single Page Layout */
+        .main-container {
             position: relative;
             z-index: 10;
-            max-width: 1400px;
-            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             padding: 20px;
         }
 
         /* Header */
         .header {
             text-align: center;
-            padding: 60px 0;
-            position: relative;
+            padding: 20px 0;
         }
 
         .angara-logo {
-            position: fixed;
-            top: 30px;
-            right: 30px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border-radius: 15px;
-            padding: 15px 25px;
+            padding: 10px 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             animation: logoFloat 4s ease-in-out infinite;
         }
 
         .angara-logo img {
-            height: 40px;
+            height: 35px;
             filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
             animation: logoGlow 3s ease-in-out infinite alternate;
         }
 
         @keyframes logoFloat {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
         @keyframes logoGlow {
@@ -135,7 +140,7 @@
 
         .main-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 900;
             background: linear-gradient(45deg, #ffd700, #ff6b35, #ff1744, #e91e63);
             background-size: 400% 400%;
@@ -143,7 +148,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradientShift 4s ease-in-out infinite;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
             position: relative;
         }
@@ -151,20 +156,20 @@
         .main-title::before {
             content: '✨';
             position: absolute;
-            left: -60px;
+            left: -50px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2rem;
+            font-size: 1.5rem;
             animation: sparkle 2s ease-in-out infinite;
         }
 
         .main-title::after {
             content: '✨';
             position: absolute;
-            right: -60px;
+            right: -50px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2rem;
+            font-size: 1.5rem;
             animation: sparkle 2s ease-in-out infinite 1s;
         }
 
@@ -179,9 +184,8 @@
         }
 
         .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
             color: #ffd700;
-            margin-bottom: 30px;
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             animation: subtitleGlow 3s ease-in-out infinite alternate;
         }
@@ -191,39 +195,27 @@
             100% { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 107, 53, 0.5); }
         }
 
-        /* Premium Diya Section */
-        .diyas-section {
-            margin: 80px 0;
-            position: relative;
+        /* Center Content - Diyas and Crackers */
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            flex: 1;
+            justify-content: center;
         }
 
-        .section-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #ffd700;
-            margin-bottom: 60px;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
-            animation: titlePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
+        /* Ultra-Realistic Diyas */
         .diyas-container {
             display: flex;
             justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
+            gap: 40px;
             align-items: flex-end;
-            perspective: 1000px;
         }
 
         .diya {
-            width: 140px;
-            height: 100px;
+            width: 80px;
+            height: 60px;
             position: relative;
             animation: diyaFloat 6s ease-in-out infinite;
             transform-style: preserve-3d;
@@ -239,39 +231,39 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, rgba(0, 0, 0, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 25% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
+                radial-gradient(ellipse at 75% 85%, rgba(0, 0, 0, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 69, 19, 0.8) 0%, rgba(160, 82, 45, 0.9) 30%, rgba(205, 133, 63, 0.8) 60%, rgba(222, 184, 135, 0.7) 100%),
                 linear-gradient(145deg, 
                     #8B4513 0%, 
-                    #A0522D 15%, 
-                    #CD853F 30%, 
-                    #DEB887 50%, 
-                    #F4A460 70%, 
-                    #D2B48C 85%, 
-                    #BC8F8F 100%);
-            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+                    #A0522D 20%, 
+                    #CD853F 40%, 
+                    #DEB887 60%, 
+                    #F4A460 80%, 
+                    #D2B48C 100%);
+            border-radius: 50% 50% 50% 50% / 75% 75% 25% 25%;
             position: relative;
             box-shadow: 
-                0 15px 40px rgba(0, 0, 0, 0.5),
-                inset 0 12px 30px rgba(255, 255, 255, 0.2),
-                inset 0 -12px 25px rgba(0, 0, 0, 0.4),
-                0 0 50px rgba(255, 165, 0, 0.4);
-            border: 3px solid #654321;
+                0 8px 25px rgba(0, 0, 0, 0.6),
+                inset 0 6px 15px rgba(255, 255, 255, 0.3),
+                inset 0 -6px 12px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 165, 0, 0.3);
+            border: 2px solid #654321;
             animation: diyaGlow 4s ease-in-out infinite;
         }
 
         .diya-body::before {
             content: '';
             position: absolute;
-            top: 8px;
+            top: 4px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 30px;
+            width: 60px;
+            height: 18px;
             background: 
                 radial-gradient(ellipse, 
-                    rgba(255, 215, 0, 0.3) 0%, 
-                    rgba(255, 165, 0, 0.2) 50%, 
+                    rgba(255, 215, 0, 0.4) 0%, 
+                    rgba(255, 165, 0, 0.3) 50%, 
                     transparent 100%);
             border-radius: 50%;
             animation: oilShimmer 5s ease-in-out infinite;
@@ -279,52 +271,52 @@
 
         .diya-wick {
             position: absolute;
-            top: -30px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 40px;
+            width: 3px;
+            height: 25px;
             background: linear-gradient(to top, 
                 #2F1B14 0%, 
                 #8B4513 30%, 
                 #A0522D 70%, 
                 #D2691E 100%);
             border-radius: 2px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
         }
 
         .diya-flame {
             position: absolute;
-            top: -35px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 24px;
-            height: 30px;
+            width: 18px;
+            height: 22px;
             background: 
                 radial-gradient(ellipse at center bottom, 
                     #FFF8DC 0%, 
-                    #FFD700 15%, 
-                    #FFA500 35%, 
-                    #FF6347 65%, 
+                    #FFD700 20%, 
+                    #FFA500 45%, 
+                    #FF6347 75%, 
                     #DC143C 100%);
             border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
             animation: realisticFlame 2.5s ease-in-out infinite alternate;
             box-shadow: 
-                0 0 40px #FFD700,
-                0 0 50px #FFA500,
-                0 0 60px #FF6347,
-                0 0 70px #DC143C;
-            filter: blur(0.8px);
+                0 0 25px #FFD700,
+                0 0 35px #FFA500,
+                0 0 45px #FF6347,
+                0 0 55px #DC143C;
+            filter: blur(0.5px);
         }
 
         .diya-flame::before {
             content: '';
             position: absolute;
-            top: -8px;
+            top: -6px;
             left: 50%;
             transform: translateX(-50%);
-            width: 14px;
-            height: 18px;
+            width: 10px;
+            height: 12px;
             background: radial-gradient(ellipse, 
                 #FFFFFF 0%, 
                 #FFF8DC 30%, 
@@ -337,11 +329,11 @@
         .diya-flame::after {
             content: '';
             position: absolute;
-            top: -5px;
+            top: -4px;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px;
-            height: 10px;
+            width: 6px;
+            height: 8px;
             background: radial-gradient(ellipse, 
                 #FFFFFF 0%, 
                 #FFF8DC 50%, 
@@ -352,14 +344,14 @@
 
         .diya-glow {
             position: absolute;
-            top: -50px;
+            top: -35px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: radial-gradient(circle, 
-                rgba(255, 215, 0, 0.2) 0%, 
-                rgba(255, 165, 0, 0.1) 50%, 
+                rgba(255, 215, 0, 0.3) 0%, 
+                rgba(255, 165, 0, 0.2) 50%, 
                 transparent 100%);
             border-radius: 50%;
             animation: ambientGlow 4s ease-in-out infinite;
@@ -367,70 +359,70 @@
 
         .diya-sparkles {
             position: absolute;
-            top: -60px;
+            top: -45px;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 60px;
+            width: 80px;
+            height: 40px;
         }
 
         .sparkle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 3px;
+            height: 3px;
             background: #FFD700;
             border-radius: 50%;
             animation: sparkleFloat 3s ease-in-out infinite;
-            box-shadow: 0 0 10px #FFD700;
+            box-shadow: 0 0 8px #FFD700;
         }
 
-        .sparkle:nth-child(1) { top: 15px; left: 20px; animation-delay: 0s; }
-        .sparkle:nth-child(2) { top: 8px; left: 45px; animation-delay: 0.8s; }
-        .sparkle:nth-child(3) { top: 20px; left: 70px; animation-delay: 1.6s; }
-        .sparkle:nth-child(4) { top: 12px; left: 95px; animation-delay: 2.4s; }
+        .sparkle:nth-child(1) { top: 10px; left: 15px; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 6px; left: 35px; animation-delay: 0.8s; }
+        .sparkle:nth-child(3) { top: 14px; left: 55px; animation-delay: 1.6s; }
+        .sparkle:nth-child(4) { top: 8px; left: 70px; animation-delay: 2.4s; }
 
         @keyframes diyaFloat {
             0%, 100% { 
                 transform: translateY(0px) rotateY(0deg) rotateX(0deg); 
             }
             50% { 
-                transform: translateY(-15px) rotateY(5deg) rotateX(2deg); 
+                transform: translateY(-8px) rotateY(3deg) rotateX(1deg); 
             }
         }
 
         @keyframes diyaGlow {
             0%, 100% { 
                 box-shadow: 
-                    0 15px 40px rgba(0, 0, 0, 0.5),
-                    inset 0 12px 30px rgba(255, 255, 255, 0.2),
-                    inset 0 -12px 25px rgba(0, 0, 0, 0.4),
-                    0 0 50px rgba(255, 165, 0, 0.4);
+                    0 8px 25px rgba(0, 0, 0, 0.6),
+                    inset 0 6px 15px rgba(255, 255, 255, 0.3),
+                    inset 0 -6px 12px rgba(0, 0, 0, 0.5),
+                    0 0 30px rgba(255, 165, 0, 0.3);
             }
             50% { 
                 box-shadow: 
-                    0 20px 50px rgba(0, 0, 0, 0.6),
-                    inset 0 15px 35px rgba(255, 255, 255, 0.25),
-                    inset 0 -15px 30px rgba(0, 0, 0, 0.5),
-                    0 0 60px rgba(255, 165, 0, 0.6);
+                    0 12px 35px rgba(0, 0, 0, 0.7),
+                    inset 0 8px 20px rgba(255, 255, 255, 0.4),
+                    inset 0 -8px 15px rgba(0, 0, 0, 0.6),
+                    0 0 40px rgba(255, 165, 0, 0.5);
             }
         }
 
         @keyframes realisticFlame {
             0% { 
-                transform: translateX(-50%) scale(1) rotate(-3deg); 
+                transform: translateX(-50%) scale(1) rotate(-2deg); 
                 box-shadow: 
-                    0 0 40px #FFD700,
-                    0 0 50px #FFA500,
-                    0 0 60px #FF6347,
-                    0 0 70px #DC143C;
+                    0 0 25px #FFD700,
+                    0 0 35px #FFA500,
+                    0 0 45px #FF6347,
+                    0 0 55px #DC143C;
             }
             100% { 
-                transform: translateX(-50%) scale(1.15) rotate(3deg); 
+                transform: translateX(-50%) scale(1.1) rotate(2deg); 
                 box-shadow: 
-                    0 0 50px #FFD700,
-                    0 0 60px #FFA500,
-                    0 0 70px #FF6347,
-                    0 0 80px #DC143C;
+                    0 0 35px #FFD700,
+                    0 0 45px #FFA500,
+                    0 0 55px #FF6347,
+                    0 0 65px #DC143C;
             }
         }
 
@@ -440,7 +432,7 @@
                 opacity: 0.8;
             }
             100% { 
-                transform: translateX(-50%) scale(1.3); 
+                transform: translateX(-50%) scale(1.2); 
                 opacity: 1;
             }
         }
@@ -451,30 +443,30 @@
                 opacity: 0.9;
             }
             100% { 
-                transform: translateX(-50%) scale(1.4); 
+                transform: translateX(-50%) scale(1.3); 
                 opacity: 1;
             }
         }
 
         @keyframes oilShimmer {
             0%, 100% { 
-                opacity: 0.3; 
+                opacity: 0.4; 
                 transform: translateX(-50%) scale(1);
             }
             50% { 
-                opacity: 0.6; 
-                transform: translateX(-50%) scale(1.1);
+                opacity: 0.7; 
+                transform: translateX(-50%) scale(1.05);
             }
         }
 
         @keyframes ambientGlow {
             0%, 100% { 
-                opacity: 0.4; 
+                opacity: 0.5; 
                 transform: translateX(-50%) scale(1);
             }
             50% { 
                 opacity: 0.8; 
-                transform: translateX(-50%) scale(1.2);
+                transform: translateX(-50%) scale(1.1);
             }
         }
 
@@ -485,44 +477,39 @@
             }
             50% { 
                 opacity: 1; 
-                transform: translateY(-15px) scale(1);
+                transform: translateY(-10px) scale(1);
             }
         }
 
-        /* Premium Crackers Section */
-        .crackers-section {
-            margin: 80px 0;
-        }
-
+        /* Ultra-Realistic Crackers */
         .crackers-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            gap: 25px;
             align-items: flex-end;
         }
 
         .cracker {
-            width: 70px;
-            height: 140px;
+            width: 45px;
+            height: 90px;
             background: 
                 linear-gradient(180deg,
                     #8B0000 0%,
-                    #DC143C 10%,
-                    #FF1493 25%,
-                    #FF69B4 45%,
+                    #DC143C 8%,
+                    #FF1493 20%,
+                    #FF69B4 40%,
                     #FFB6C1 65%,
-                    #FFC0CB 80%,
+                    #FFC0CB 85%,
                     #FFF0F5 100%);
-            border-radius: 12px;
+            border-radius: 8px;
             position: relative;
             animation: crackerSway 5s ease-in-out infinite;
             box-shadow:
-                0 12px 35px rgba(0, 0, 0, 0.4),
-                inset 0 8px 20px rgba(255, 255, 255, 0.25),
-                inset 0 -8px 20px rgba(0, 0, 0, 0.3),
-                0 0 30px rgba(255, 20, 147, 0.5);
-            border: 4px solid #8B0000;
+                0 6px 20px rgba(0, 0, 0, 0.5),
+                inset 0 4px 12px rgba(255, 255, 255, 0.3),
+                inset 0 -4px 12px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(255, 20, 147, 0.4);
+            border: 3px solid #8B0000;
         }
 
         .cracker:nth-child(1) { animation-delay: 0s; }
@@ -535,43 +522,43 @@
         .cracker::before {
             content: '';
             position: absolute;
-            top: -12px;
+            top: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 6px;
-            height: 20px;
+            width: 4px;
+            height: 15px;
             background: linear-gradient(to top, 
                 #2F1B14 0%, 
                 #8B4513 50%, 
                 #A0522D 100%);
-            border-radius: 3px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 2px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
         }
 
         .cracker::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -6px;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px;
-            height: 12px;
+            width: 6px;
+            height: 8px;
             background: linear-gradient(to top, 
                 #2F1B14 0%, 
                 #654321 100%);
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         .cracker-glow {
             position: absolute;
-            top: -20px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             background: radial-gradient(circle, 
-                rgba(255, 20, 147, 0.3) 0%, 
-                rgba(255, 105, 180, 0.2) 50%, 
+                rgba(255, 20, 147, 0.4) 0%, 
+                rgba(255, 105, 180, 0.3) 50%, 
                 transparent 100%);
             border-radius: 50%;
             animation: crackerGlow 3s ease-in-out infinite;
@@ -579,54 +566,54 @@
 
         .cracker-sparkles {
             position: absolute;
-            top: -30px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 30px;
+            width: 40px;
+            height: 20px;
         }
 
         .cracker-sparkle {
             position: absolute;
-            width: 3px;
-            height: 3px;
+            width: 2px;
+            height: 2px;
             background: #FFD700;
             border-radius: 50%;
             animation: crackerSparkle 2s ease-in-out infinite;
-            box-shadow: 0 0 8px #FFD700;
+            box-shadow: 0 0 6px #FFD700;
         }
 
-        .cracker-sparkle:nth-child(1) { top: 8px; left: 15px; animation-delay: 0s; }
-        .cracker-sparkle:nth-child(2) { top: 5px; left: 30px; animation-delay: 0.5s; }
-        .cracker-sparkle:nth-child(3) { top: 12px; left: 45px; animation-delay: 1s; }
+        .cracker-sparkle:nth-child(1) { top: 6px; left: 10px; animation-delay: 0s; }
+        .cracker-sparkle:nth-child(2) { top: 4px; left: 20px; animation-delay: 0.5s; }
+        .cracker-sparkle:nth-child(3) { top: 8px; left: 30px; animation-delay: 1s; }
 
         @keyframes crackerSway {
             0%, 100% { 
-                transform: translateY(0) rotate(-1deg); 
+                transform: translateY(0) rotate(-0.5deg); 
                 box-shadow:
-                    0 12px 35px rgba(0, 0, 0, 0.4),
-                    inset 0 8px 20px rgba(255, 255, 255, 0.25),
-                    inset 0 -8px 20px rgba(0, 0, 0, 0.3),
-                    0 0 30px rgba(255, 20, 147, 0.5);
+                    0 6px 20px rgba(0, 0, 0, 0.5),
+                    inset 0 4px 12px rgba(255, 255, 255, 0.3),
+                    inset 0 -4px 12px rgba(0, 0, 0, 0.4),
+                    0 0 20px rgba(255, 20, 147, 0.4);
             }
             50% { 
-                transform: translateY(-12px) rotate(1deg); 
+                transform: translateY(-8px) rotate(0.5deg); 
                 box-shadow:
-                    0 18px 45px rgba(0, 0, 0, 0.5),
-                    inset 0 12px 25px rgba(255, 255, 255, 0.3),
-                    inset 0 -12px 25px rgba(0, 0, 0, 0.4),
-                    0 0 40px rgba(255, 20, 147, 0.7);
+                    0 10px 30px rgba(0, 0, 0, 0.6),
+                    inset 0 6px 15px rgba(255, 255, 255, 0.4),
+                    inset 0 -6px 15px rgba(0, 0, 0, 0.5),
+                    0 0 30px rgba(255, 20, 147, 0.6);
             }
         }
 
         @keyframes crackerGlow {
             0%, 100% { 
-                opacity: 0.3; 
+                opacity: 0.4; 
                 transform: translateX(-50%) scale(1);
             }
             50% { 
-                opacity: 0.6; 
-                transform: translateX(-50%) scale(1.2);
+                opacity: 0.7; 
+                transform: translateX(-50%) scale(1.1);
             }
         }
 
@@ -637,94 +624,94 @@
             }
             50% { 
                 opacity: 1; 
-                transform: translateY(-10px) scale(1);
+                transform: translateY(-8px) scale(1);
             }
         }
 
-        /* Family Message */
+        /* Family Message - Compact */
         .family-message {
             text-align: center;
-            padding: 80px 20px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
-            border-radius: 30px;
-            margin: 60px 0;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
         }
 
         .family-message h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: #ffd700;
-            margin-bottom: 30px;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             animation: messageGlow 4s ease-in-out infinite;
         }
 
         .family-message p {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             color: #ffffff;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            line-height: 1.6;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
 
         .highlight {
             color: #ff6b35;
             font-weight: 600;
-            text-shadow: 0 0 15px rgba(255, 107, 53, 0.8);
+            text-shadow: 0 0 12px rgba(255, 107, 53, 0.8);
             animation: highlightPulse 3s ease-in-out infinite;
         }
 
         @keyframes messageGlow {
             0%, 100% { 
-                text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
                 transform: scale(1);
             }
             50% { 
-                text-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 107, 53, 0.5);
-                transform: scale(1.02);
+                text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 107, 53, 0.5);
+                transform: scale(1.01);
             }
         }
 
         @keyframes highlightPulse {
             0%, 100% { 
-                text-shadow: 0 0 15px rgba(255, 107, 53, 0.8);
+                text-shadow: 0 0 12px rgba(255, 107, 53, 0.8);
             }
             50% { 
-                text-shadow: 0 0 25px rgba(255, 107, 53, 1), 0 0 35px rgba(255, 215, 0, 0.5);
+                text-shadow: 0 0 20px rgba(255, 107, 53, 1), 0 0 25px rgba(255, 215, 0, 0.5);
             }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .angara-logo {
-                top: 20px;
-                right: 20px;
-                padding: 10px 15px;
+                top: 15px;
+                right: 15px;
+                padding: 8px 15px;
             }
 
             .angara-logo img {
-                height: 30px;
+                height: 25px;
             }
 
             .diyas-container {
-                gap: 30px;
-            }
-
-            .diya {
-                width: 100px;
-                height: 70px;
-            }
-
-            .crackers-container {
                 gap: 25px;
             }
 
+            .diya {
+                width: 60px;
+                height: 45px;
+            }
+
+            .crackers-container {
+                gap: 18px;
+            }
+
             .cracker {
-                width: 50px;
-                height: 100px;
+                width: 35px;
+                height: 70px;
             }
 
             .main-title::before,
@@ -734,24 +721,29 @@
         }
 
         @media (max-width: 480px) {
-            .container {
+            .main-container {
                 padding: 10px;
             }
 
             .header {
-                padding: 40px 0;
+                padding: 15px 0;
             }
 
             .diyas-container {
-                gap: 20px;
+                gap: 15px;
             }
 
             .crackers-container {
-                gap: 15px;
+                gap: 12px;
+            }
+
+            .center-content {
+                gap: 20px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Animated Background -->
     <div class="stars">
@@ -782,16 +774,17 @@
         <img src="angara-logo.svg" alt="Angara Logo">
     </div>
 
-    <div class="container">
+    <!-- Main Container - Single Page -->
+    <div class="main-container">
         <!-- Header -->
         <header class="header">
             <h1 class="main-title">Happy Diwali</h1>
             <p class="subtitle">Angara Family Celebration</p>
         </header>
 
-        <!-- Diyas Section -->
-        <section class="diyas-section">
-            <h2 class="section-title">🪔 Festival of Lights 🪔</h2>
+        <!-- Center Content -->
+        <div class="center-content">
+            <!-- Ultra-Realistic Diyas -->
             <div class="diyas-container">
                 <div class="diya">
                     <div class="diya-glow"></div>
@@ -854,11 +847,8 @@
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Crackers Section -->
-        <section class="crackers-section">
-            <h2 class="section-title">🎆 Fireworks & Crackers 🎆</h2>
+            <!-- Ultra-Realistic Crackers -->
             <div class="crackers-container">
                 <div class="cracker">
                     <div class="cracker-glow"></div>
@@ -909,7 +899,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- Family Message -->
         <div class="family-message">
@@ -920,5 +910,5 @@
         </div>
     </div>
 </body>
-</html>
+
 </html>
