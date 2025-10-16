@@ -250,42 +250,196 @@
         /* Sparkle Particles */
         .sparkle {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #FFD700;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #FFD700 0%, #FF6B35 50%, transparent 100%);
             border-radius: 50%;
-            animation: sparkleFloat 6s linear infinite;
-            box-shadow: 0 0 10px #FFD700;
+            animation: sparkleFloat 8s linear infinite;
+            box-shadow: 0 0 15px #FFD700, 0 0 25px rgba(255, 107, 53, 0.5);
         }
 
         .sparkle:nth-child(1) {
-            left: 10%;
+            left: 5%;
             animation-delay: 0s;
         }
 
         .sparkle:nth-child(2) {
-            left: 25%;
-            animation-delay: 1s;
+            left: 15%;
+            animation-delay: 0.8s;
         }
 
         .sparkle:nth-child(3) {
-            left: 40%;
-            animation-delay: 2s;
+            left: 25%;
+            animation-delay: 1.6s;
         }
 
         .sparkle:nth-child(4) {
-            left: 55%;
-            animation-delay: 3s;
+            left: 35%;
+            animation-delay: 2.4s;
         }
 
         .sparkle:nth-child(5) {
-            left: 70%;
-            animation-delay: 4s;
+            left: 45%;
+            animation-delay: 3.2s;
         }
 
         .sparkle:nth-child(6) {
+            left: 55%;
+            animation-delay: 4s;
+        }
+
+        .sparkle:nth-child(7) {
+            left: 65%;
+            animation-delay: 4.8s;
+        }
+
+        .sparkle:nth-child(8) {
+            left: 75%;
+            animation-delay: 5.6s;
+        }
+
+        .sparkle:nth-child(9) {
             left: 85%;
+            animation-delay: 6.4s;
+        }
+
+        .sparkle:nth-child(10) {
+            left: 95%;
+            animation-delay: 7.2s;
+        }
+
+        /* Additional Sparkle Types */
+        .sparkle-small {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: sparkleTwinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 8px #FFD700;
+        }
+
+        .sparkle-medium {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            animation: sparklePulse 4s ease-in-out infinite;
+            box-shadow: 0 0 20px #FFD700;
+        }
+
+        .sparkle-large {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #FFD700 0%, #FF6B35 50%, #8B0000 100%);
+            border-radius: 50%;
+            animation: sparkleGlow 5s ease-in-out infinite;
+            box-shadow: 0 0 30px #FFD700, 0 0 50px rgba(255, 107, 53, 0.3);
+        }
+
+        @keyframes sparkleTwinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes sparklePulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes sparkleGlow {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        /* Position additional sparkles */
+        .sparkle-small:nth-child(1) {
+            left: 12%;
+            top: 20%;
+            animation-delay: 0.5s;
+        }
+
+        .sparkle-small:nth-child(2) {
+            left: 88%;
+            top: 30%;
+            animation-delay: 1.5s;
+        }
+
+        .sparkle-small:nth-child(3) {
+            left: 45%;
+            top: 60%;
+            animation-delay: 2.5s;
+        }
+
+        .sparkle-small:nth-child(4) {
+            left: 25%;
+            top: 80%;
+            animation-delay: 3.5s;
+        }
+
+        .sparkle-small:nth-child(5) {
+            left: 75%;
+            top: 70%;
+            animation-delay: 4.5s;
+        }
+
+        .sparkle-medium:nth-child(1) {
+            left: 20%;
+            top: 40%;
+            animation-delay: 1s;
+        }
+
+        .sparkle-medium:nth-child(2) {
+            left: 80%;
+            top: 50%;
+            animation-delay: 3s;
+        }
+
+        .sparkle-medium:nth-child(3) {
+            left: 50%;
+            top: 25%;
             animation-delay: 5s;
+        }
+
+        .sparkle-large:nth-child(1) {
+            left: 30%;
+            top: 15%;
+            animation-delay: 2s;
+        }
+
+        .sparkle-large:nth-child(2) {
+            left: 70%;
+            top: 85%;
+            animation-delay: 4s;
         }
 
         @keyframes sparkleFloat {
@@ -332,8 +486,13 @@
             background-clip: text;
             animation: gradientShift 4s ease-in-out infinite, fadeIn 2.5s ease-out;
             margin-bottom: 30px;
-            text-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+            text-shadow:
+                0 0 20px rgba(255, 215, 0, 0.8),
+                0 0 40px rgba(255, 107, 53, 0.6),
+                0 0 60px rgba(255, 215, 0, 0.4),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
             position: relative;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
         }
 
         .hero-title::before {
@@ -374,9 +533,13 @@
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.4rem, 3.5vw, 2.2rem);
             color: #FFD700;
-            text-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+            text-shadow:
+                0 0 15px rgba(255, 215, 0, 1),
+                0 0 30px rgba(255, 107, 53, 0.7),
+                2px 2px 4px rgba(0, 0, 0, 0.9);
             animation: fadeIn 2.5s ease-out 0.8s both;
-            font-weight: 400;
+            font-weight: 600;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
         }
 
         @keyframes fadeIn {
@@ -441,8 +604,13 @@
             color: #FFD700;
             text-align: center;
             margin-bottom: 50px;
-            text-shadow: 0 0 40px rgba(255, 215, 0, 0.9);
+            text-shadow:
+                0 0 20px rgba(255, 215, 0, 1),
+                0 0 40px rgba(255, 107, 53, 0.8),
+                0 0 60px rgba(255, 215, 0, 0.6),
+                2px 2px 6px rgba(0, 0, 0, 0.9);
             position: relative;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8));
         }
 
         .section-title::after {
@@ -468,7 +636,11 @@
             font-size: 1.3rem;
             color: #ffffff;
             line-height: 2;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.3),
+                1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 500;
         }
 
         /* Ultra-Realistic Glowing Diya */
@@ -793,7 +965,11 @@
         .card-text {
             color: #ffffff;
             line-height: 1.6;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            text-shadow:
+                0 0 8px rgba(255, 255, 255, 0.8),
+                0 0 15px rgba(255, 215, 0, 0.4),
+                1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-weight: 500;
         }
 
         /* Enhanced Sequential Lights */
@@ -937,15 +1113,23 @@
             color: #FFD700;
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+            text-shadow:
+                0 0 20px rgba(255, 215, 0, 1),
+                0 0 40px rgba(255, 107, 53, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.9);
             margin-bottom: 20px;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8));
         }
 
         .angara-branding {
             font-family: 'Dancing Script', cursive;
             font-size: 1.8rem;
             color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            text-shadow:
+                0 0 15px rgba(255, 255, 255, 0.8),
+                0 0 25px rgba(255, 215, 0, 0.6),
+                1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 600;
         }
 
         /* Angara Logo */
@@ -1062,6 +1246,20 @@
         <div class="sparkle"></div>
         <div class="sparkle"></div>
         <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle-small"></div>
+        <div class="sparkle-small"></div>
+        <div class="sparkle-small"></div>
+        <div class="sparkle-small"></div>
+        <div class="sparkle-small"></div>
+        <div class="sparkle-medium"></div>
+        <div class="sparkle-medium"></div>
+        <div class="sparkle-medium"></div>
+        <div class="sparkle-large"></div>
+        <div class="sparkle-large"></div>
     </div>
 
     <!-- Angara Logo -->
