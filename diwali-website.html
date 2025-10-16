@@ -1098,7 +1098,41 @@
     <!-- Floating sparkles -->
     <div id="sparkles"></div>
 
+    <!-- Audio Element -->
+    <audio id="diwaliAudio" loop>
+        <source src="happy_diwali_tkmoc.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
+        // Auto-play audio when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            const audio = document.getElementById('diwaliAudio');
+
+            // Set audio properties for autoplay
+            audio.volume = 0.7; // Set volume to 70%
+            audio.muted = false;
+
+            // Try to play audio automatically
+            const playAudio = () => {
+                audio.play().catch(error => {
+                    console.log('Autoplay prevented:', error);
+                    // Retry playing after a short delay
+                    setTimeout(() => {
+                        audio.play().catch(() => {
+                            // Try one more time after user interaction
+                            document.addEventListener('click', () => {
+                                audio.play();
+                            }, { once: true });
+                        });
+                    }, 1000);
+                });
+            };
+
+            // Try to play immediately
+            playAudio();
+        });
+
         // Create animated stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
