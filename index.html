@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angara Diwali Celebration - Festival of Lights</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap"
         rel="stylesheet">
     <style>
         * {
@@ -17,14 +17,74 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: radial-gradient(ellipse at center, #0a0a2e 0%, #16213e 50%, #0f3460 100%);
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
+            background: linear-gradient(135deg, #2D1B69 0%, #8B0000 20%, #FF4500 40%, #FFD700 60%, #8B0000 80%, #2D1B69 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            overflow-x: hidden;
+            cursor: none;
+            min-height: 100vh;
         }
 
-        /* Animated Background Stars */
-        .stars {
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+        }
+
+        /* Enhanced Custom Cursor with Sparkles */
+        .cursor {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle, #FFD700 0%, #FF6B35 50%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 20px #FFD700;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #FFD700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.8;
+            animation: trailFade 1.5s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+        /* Enhanced Background Elements */
+        .bg-elements {
             position: fixed;
             top: 0;
             left: 0;
@@ -34,739 +94,974 @@
             z-index: 1;
         }
 
-        .star {
+        .floating-diya {
             position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #FFD700 0%, #FF6B35 40%, #8B0000 80%, #2D1B69 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 10s ease-in-out infinite;
+            box-shadow: 0 0 30px #FFD700, 0 0 50px rgba(255, 107, 53, 0.5);
         }
 
-        .star:nth-child(1) { top: 10%; left: 20%; width: 2px; height: 2px; animation-delay: 0s; }
-        .star:nth-child(2) { top: 20%; left: 80%; width: 1px; height: 1px; animation-delay: 1s; }
-        .star:nth-child(3) { top: 30%; left: 40%; width: 3px; height: 3px; animation-delay: 2s; }
-        .star:nth-child(4) { top: 50%; left: 10%; width: 2px; height: 2px; animation-delay: 0.5s; }
-        .star:nth-child(5) { top: 60%; left: 70%; width: 1px; height: 1px; animation-delay: 1.5s; }
-        .star:nth-child(6) { top: 80%; left: 30%; width: 2px; height: 2px; animation-delay: 2.5s; }
-        .star:nth-child(7) { top: 15%; left: 60%; width: 1px; height: 1px; animation-delay: 0.8s; }
-        .star:nth-child(8) { top: 70%; left: 90%; width: 3px; height: 3px; animation-delay: 1.8s; }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .particle {
-            position: absolute;
-            background: linear-gradient(45deg, #ffd700, #ff6b35);
-            border-radius: 50%;
-            animation: float 6s infinite linear;
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; width: 4px; height: 4px; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 1s; width: 6px; height: 6px; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 2s; width: 3px; height: 3px; }
-        .particle:nth-child(4) { left: 40%; animation-delay: 3s; width: 5px; height: 5px; }
-        .particle:nth-child(5) { left: 50%; animation-delay: 4s; width: 4px; height: 4px; }
-        .particle:nth-child(6) { left: 60%; animation-delay: 5s; width: 6px; height: 6px; }
-        .particle:nth-child(7) { left: 70%; animation-delay: 1.5s; width: 3px; height: 3px; }
-        .particle:nth-child(8) { left: 80%; animation-delay: 2.5s; width: 5px; height: 5px; }
-        .particle:nth-child(9) { left: 90%; animation-delay: 3.5s; width: 4px; height: 4px; }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
-        /* Main Container - Single Page Layout */
-        .main-container {
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .angara-logo {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 15px;
-            padding: 10px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            animation: logoFloat 4s ease-in-out infinite;
-        }
-
-        .angara-logo img {
-            height: 35px;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
-            animation: logoGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes logoGlow {
-            0% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
-            100% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)); }
-        }
-
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            background: linear-gradient(45deg, #ffd700, #ff6b35, #ff1744, #e91e63);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 4s ease-in-out infinite;
-            margin-bottom: 10px;
-            text-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
-            position: relative;
-        }
-
-        .main-title::before {
-            content: '✨';
-            position: absolute;
-            left: -50px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            animation: sparkle 2s ease-in-out infinite;
-        }
-
-        .main-title::after {
-            content: '✨';
-            position: absolute;
-            right: -50px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            animation: sparkle 2s ease-in-out infinite 1s;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
-            50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
-        }
-
-        .subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
-            color: #ffd700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            animation: subtitleGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes subtitleGlow {
-            0% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-            100% { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 107, 53, 0.5); }
-        }
-
-        /* Center Content - Diyas and Crackers */
-        .center-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            flex: 1;
-            justify-content: center;
-        }
-
-        /* Ultra-Realistic Diyas */
-        .diyas-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            align-items: flex-end;
-        }
-
-        .diya {
-            width: 80px;
-            height: 60px;
-            position: relative;
-            animation: diyaFloat 6s ease-in-out infinite;
-            transform-style: preserve-3d;
-        }
-
-        .diya:nth-child(1) { animation-delay: 0s; }
-        .diya:nth-child(2) { animation-delay: 0.5s; }
-        .diya:nth-child(3) { animation-delay: 1s; }
-        .diya:nth-child(4) { animation-delay: 1.5s; }
-        .diya:nth-child(5) { animation-delay: 2s; }
-
-        .diya-body {
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 25% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
-                radial-gradient(ellipse at 75% 85%, rgba(0, 0, 0, 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(139, 69, 19, 0.8) 0%, rgba(160, 82, 45, 0.9) 30%, rgba(205, 133, 63, 0.8) 60%, rgba(222, 184, 135, 0.7) 100%),
-                linear-gradient(145deg, 
-                    #8B4513 0%, 
-                    #A0522D 20%, 
-                    #CD853F 40%, 
-                    #DEB887 60%, 
-                    #F4A460 80%, 
-                    #D2B48C 100%);
-            border-radius: 50% 50% 50% 50% / 75% 75% 25% 25%;
-            position: relative;
-            box-shadow: 
-                0 8px 25px rgba(0, 0, 0, 0.6),
-                inset 0 6px 15px rgba(255, 255, 255, 0.3),
-                inset 0 -6px 12px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(255, 165, 0, 0.3);
-            border: 2px solid #654321;
-            animation: diyaGlow 4s ease-in-out infinite;
-        }
-
-        .diya-body::before {
+        .floating-diya::before {
             content: '';
             position: absolute;
-            top: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 18px;
-            background: 
-                radial-gradient(ellipse, 
-                    rgba(255, 215, 0, 0.4) 0%, 
-                    rgba(255, 165, 0, 0.3) 50%, 
-                    transparent 100%);
-            border-radius: 50%;
-            animation: oilShimmer 5s ease-in-out infinite;
-        }
-
-        .diya-wick {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 25px;
-            background: linear-gradient(to top, 
-                #2F1B14 0%, 
-                #8B4513 30%, 
-                #A0522D 70%, 
-                #D2691E 100%);
-            border-radius: 2px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
-        }
-
-        .diya-flame {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 18px;
-            height: 22px;
-            background: 
-                radial-gradient(ellipse at center bottom, 
-                    #FFF8DC 0%, 
-                    #FFD700 20%, 
-                    #FFA500 45%, 
-                    #FF6347 75%, 
-                    #DC143C 100%);
-            border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
-            animation: realisticFlame 2.5s ease-in-out infinite alternate;
-            box-shadow: 
-                0 0 25px #FFD700,
-                0 0 35px #FFA500,
-                0 0 45px #FF6347,
-                0 0 55px #DC143C;
-            filter: blur(0.5px);
-        }
-
-        .diya-flame::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 12px;
-            background: radial-gradient(ellipse, 
-                #FFFFFF 0%, 
-                #FFF8DC 30%, 
-                #FFD700 60%, 
-                transparent 100%);
-            border-radius: 50%;
-            animation: innerFlame 1.8s ease-in-out infinite alternate;
-        }
-
-        .diya-flame::after {
-            content: '';
-            position: absolute;
-            top: -4px;
+            top: -8px;
             left: 50%;
             transform: translateX(-50%);
             width: 6px;
-            height: 8px;
-            background: radial-gradient(ellipse, 
-                #FFFFFF 0%, 
-                #FFF8DC 50%, 
-                transparent 100%);
+            height: 10px;
+            background: radial-gradient(ellipse, #FFD700 0%, #FFA500 100%);
             border-radius: 50%;
-            animation: coreFlame 1.2s ease-in-out infinite alternate;
+            box-shadow: 0 0 15px #FFD700;
+            animation: flameFlicker 2s ease-in-out infinite alternate;
         }
 
-        .diya-glow {
+        .floating-diya:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .floating-diya:nth-child(2) {
+            top: 65%;
+            left: 85%;
+            animation-delay: 2.5s;
+        }
+
+        .floating-diya:nth-child(3) {
+            top: 35%;
+            left: 75%;
+            animation-delay: 5s;
+        }
+
+        .floating-diya:nth-child(4) {
+            top: 85%;
+            left: 15%;
+            animation-delay: 7.5s;
+        }
+
+        .floating-diya:nth-child(5) {
+            top: 25%;
+            left: 45%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-diya:nth-child(6) {
+            top: 75%;
+            left: 55%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+
+            25% {
+                transform: translateY(-15px) rotate(90deg) scale(1.1);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(180deg) scale(1.2);
+            }
+
+            75% {
+                transform: translateY(-10px) rotate(270deg) scale(1.05);
+            }
+        }
+
+        @keyframes flameFlicker {
+            0% {
+                transform: translateX(-50%) scale(1) rotate(-2deg);
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1.1) rotate(2deg);
+            }
+        }
+
+        /* Enhanced Fireworks */
+        .firework {
             position: absolute;
-            top: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, 
-                rgba(255, 215, 0, 0.3) 0%, 
-                rgba(255, 165, 0, 0.2) 50%, 
-                transparent 100%);
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #FFD700 0%, #FF6B35 50%, transparent 100%);
             border-radius: 50%;
-            animation: ambientGlow 4s ease-in-out infinite;
+            animation: firework 4s ease-out infinite;
+            box-shadow: 0 0 20px #FFD700;
         }
 
-        .diya-sparkles {
-            position: absolute;
-            top: -45px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 40px;
+        .firework:nth-child(1) {
+            top: 20%;
+            left: 15%;
+            animation-delay: 1s;
         }
 
+        .firework:nth-child(2) {
+            top: 45%;
+            left: 70%;
+            animation-delay: 4s;
+        }
+
+        .firework:nth-child(3) {
+            top: 70%;
+            left: 35%;
+            animation-delay: 7s;
+        }
+
+        .firework:nth-child(4) {
+            top: 30%;
+            left: 80%;
+            animation-delay: 2.5s;
+        }
+
+        .firework:nth-child(5) {
+            top: 60%;
+            left: 20%;
+            animation-delay: 5.5s;
+        }
+
+        @keyframes firework {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            30% {
+                transform: scale(1.5) rotate(120deg);
+                opacity: 0.8;
+            }
+
+            60% {
+                transform: scale(2.5) rotate(240deg);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scale(4) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle Particles */
         .sparkle {
             position: absolute;
             width: 3px;
             height: 3px;
             background: #FFD700;
             border-radius: 50%;
-            animation: sparkleFloat 3s ease-in-out infinite;
-            box-shadow: 0 0 8px #FFD700;
+            animation: sparkleFloat 6s linear infinite;
+            box-shadow: 0 0 10px #FFD700;
         }
 
-        .sparkle:nth-child(1) { top: 10px; left: 15px; animation-delay: 0s; }
-        .sparkle:nth-child(2) { top: 6px; left: 35px; animation-delay: 0.8s; }
-        .sparkle:nth-child(3) { top: 14px; left: 55px; animation-delay: 1.6s; }
-        .sparkle:nth-child(4) { top: 8px; left: 70px; animation-delay: 2.4s; }
-
-        @keyframes diyaFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotateY(0deg) rotateX(0deg); 
-            }
-            50% { 
-                transform: translateY(-8px) rotateY(3deg) rotateX(1deg); 
-            }
+        .sparkle:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
         }
 
-        @keyframes diyaGlow {
-            0%, 100% { 
-                box-shadow: 
-                    0 8px 25px rgba(0, 0, 0, 0.6),
-                    inset 0 6px 15px rgba(255, 255, 255, 0.3),
-                    inset 0 -6px 12px rgba(0, 0, 0, 0.5),
-                    0 0 30px rgba(255, 165, 0, 0.3);
-            }
-            50% { 
-                box-shadow: 
-                    0 12px 35px rgba(0, 0, 0, 0.7),
-                    inset 0 8px 20px rgba(255, 255, 255, 0.4),
-                    inset 0 -8px 15px rgba(0, 0, 0, 0.6),
-                    0 0 40px rgba(255, 165, 0, 0.5);
-            }
+        .sparkle:nth-child(2) {
+            left: 25%;
+            animation-delay: 1s;
         }
 
-        @keyframes realisticFlame {
-            0% { 
-                transform: translateX(-50%) scale(1) rotate(-2deg); 
-                box-shadow: 
-                    0 0 25px #FFD700,
-                    0 0 35px #FFA500,
-                    0 0 45px #FF6347,
-                    0 0 55px #DC143C;
-            }
-            100% { 
-                transform: translateX(-50%) scale(1.1) rotate(2deg); 
-                box-shadow: 
-                    0 0 35px #FFD700,
-                    0 0 45px #FFA500,
-                    0 0 55px #FF6347,
-                    0 0 65px #DC143C;
-            }
+        .sparkle:nth-child(3) {
+            left: 40%;
+            animation-delay: 2s;
         }
 
-        @keyframes innerFlame {
-            0% { 
-                transform: translateX(-50%) scale(1); 
-                opacity: 0.8;
-            }
-            100% { 
-                transform: translateX(-50%) scale(1.2); 
-                opacity: 1;
-            }
+        .sparkle:nth-child(4) {
+            left: 55%;
+            animation-delay: 3s;
         }
 
-        @keyframes coreFlame {
-            0% { 
-                transform: translateX(-50%) scale(1); 
-                opacity: 0.9;
-            }
-            100% { 
-                transform: translateX(-50%) scale(1.3); 
-                opacity: 1;
-            }
+        .sparkle:nth-child(5) {
+            left: 70%;
+            animation-delay: 4s;
         }
 
-        @keyframes oilShimmer {
-            0%, 100% { 
-                opacity: 0.4; 
-                transform: translateX(-50%) scale(1);
-            }
-            50% { 
-                opacity: 0.7; 
-                transform: translateX(-50%) scale(1.05);
-            }
-        }
-
-        @keyframes ambientGlow {
-            0%, 100% { 
-                opacity: 0.5; 
-                transform: translateX(-50%) scale(1);
-            }
-            50% { 
-                opacity: 0.8; 
-                transform: translateX(-50%) scale(1.1);
-            }
+        .sparkle:nth-child(6) {
+            left: 85%;
+            animation-delay: 5s;
         }
 
         @keyframes sparkleFloat {
-            0%, 100% { 
-                opacity: 0; 
-                transform: translateY(0px) scale(0);
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
             }
-            50% { 
-                opacity: 1; 
-                transform: translateY(-10px) scale(1);
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
             }
         }
 
-        /* Ultra-Realistic Crackers */
-        .crackers-container {
+        /* Enhanced Hero Section */
+        .hero {
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 25px;
-            align-items: flex-end;
-        }
-
-        .cracker {
-            width: 45px;
-            height: 90px;
-            background: 
-                linear-gradient(180deg,
-                    #8B0000 0%,
-                    #DC143C 8%,
-                    #FF1493 20%,
-                    #FF69B4 40%,
-                    #FFB6C1 65%,
-                    #FFC0CB 85%,
-                    #FFF0F5 100%);
-            border-radius: 8px;
+            align-items: center;
+            text-align: center;
             position: relative;
-            animation: crackerSway 5s ease-in-out infinite;
-            box-shadow:
-                0 6px 20px rgba(0, 0, 0, 0.5),
-                inset 0 4px 12px rgba(255, 255, 255, 0.3),
-                inset 0 -4px 12px rgba(0, 0, 0, 0.4),
-                0 0 20px rgba(255, 20, 147, 0.4);
-            border: 3px solid #8B0000;
+            z-index: 10;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
         }
 
-        .cracker:nth-child(1) { animation-delay: 0s; }
-        .cracker:nth-child(2) { animation-delay: 0.7s; }
-        .cracker:nth-child(3) { animation-delay: 1.4s; }
-        .cracker:nth-child(4) { animation-delay: 2.1s; }
-        .cracker:nth-child(5) { animation-delay: 2.8s; }
-        .cracker:nth-child(6) { animation-delay: 3.5s; }
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #FFD700, #FF6B35, #8B0000, #2D1B69, #FFD700);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite, fadeIn 2.5s ease-out;
+            margin-bottom: 30px;
+            text-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+            position: relative;
+        }
 
-        .cracker::before {
+        .hero-title::before {
+            content: '✨';
+            position: absolute;
+            left: -80px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            animation: sparkleRotate 3s ease-in-out infinite;
+        }
+
+        .hero-title::after {
+            content: '✨';
+            position: absolute;
+            right: -80px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            animation: sparkleRotate 3s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes sparkleRotate {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translateY(-50%) scale(1) rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) scale(1.3) rotate(180deg);
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            color: #FFD700;
+            text-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+            animation: fadeIn 2.5s ease-out 0.8s both;
+            font-weight: 400;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Content Sections */
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 100px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin: 120px 0;
+            padding: 80px 50px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border-radius: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: translateX(-100%);
+            }
+
+            50% {
+                transform: translateX(100%);
+            }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.9);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            border-radius: 2px;
+        }
+
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .section-text {
+            font-size: 1.3rem;
+            color: #ffffff;
+            line-height: 2;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Ultra-Realistic Glowing Diya */
+        .glowing-diya {
+            width: 150px;
+            height: 110px;
+            position: relative;
+            margin: 0 auto;
+            animation: diyaFloat 6s ease-in-out infinite;
+        }
+
+        .diya-body {
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 0, 0, 0.4) 0%, transparent 60%),
+                linear-gradient(145deg, #8B4513 0%, #A0522D 20%, #CD853F 40%, #DEB887 60%, #F4A460 80%, #D2B48C 100%);
+            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            position: relative;
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.6),
+                inset 0 15px 35px rgba(255, 255, 255, 0.25),
+                inset 0 -15px 30px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(255, 165, 0, 0.7);
+            border: 4px solid #654321;
+            animation: diyaGlow 5s ease-in-out infinite;
+        }
+
+        .diya-body::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 35px;
+            background:
+                radial-gradient(ellipse,
+                    rgba(255, 215, 0, 0.4) 0%,
+                    rgba(255, 165, 0, 0.3) 50%,
+                    transparent 100%);
+            border-radius: 50%;
+            animation: oilShimmer 6s ease-in-out infinite;
+        }
+
+        .diya-wick {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 45px;
+            background: linear-gradient(to top,
+                    #2F1B14 0%,
+                    #8B4513 30%,
+                    #A0522D 70%,
+                    #D2691E 100%);
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+        }
+
+        .diya-flame {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 30px;
+            background:
+                radial-gradient(ellipse at center bottom,
+                    #FFF8DC 0%,
+                    #FFD700 20%,
+                    #FFA500 45%,
+                    #FF6347 75%,
+                    #DC143C 100%);
+            border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+            animation: realisticFlame 2.8s ease-in-out infinite alternate;
+            box-shadow:
+                0 0 35px #FFD700,
+                0 0 45px #FFA500,
+                0 0 55px #FF6347,
+                0 0 65px #DC143C;
+            filter: blur(0.8px);
+            transition: all 0.3s ease;
+        }
+
+        .diya-flame::before {
             content: '';
             position: absolute;
             top: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 15px;
-            background: linear-gradient(to top, 
-                #2F1B14 0%, 
-                #8B4513 50%, 
-                #A0522D 100%);
-            border-radius: 2px;
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+            width: 15px;
+            height: 18px;
+            background: radial-gradient(ellipse,
+                    #FFFFFF 0%,
+                    #FFF8DC 30%,
+                    #FFD700 60%,
+                    transparent 100%);
+            border-radius: 50%;
+            animation: innerFlame 2s ease-in-out infinite alternate;
         }
 
-        .cracker::after {
+        .diya-flame::after {
             content: '';
             position: absolute;
-            bottom: -6px;
+            top: -5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 6px;
-            height: 8px;
-            background: linear-gradient(to top, 
-                #2F1B14 0%, 
-                #654321 100%);
-            border-radius: 3px;
-        }
-
-        .cracker-glow {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, 
-                rgba(255, 20, 147, 0.4) 0%, 
-                rgba(255, 105, 180, 0.3) 50%, 
-                transparent 100%);
+            width: 8px;
+            height: 10px;
+            background: radial-gradient(ellipse,
+                    #FFFFFF 0%,
+                    #FFF8DC 50%,
+                    transparent 100%);
             border-radius: 50%;
-            animation: crackerGlow 3s ease-in-out infinite;
+            animation: coreFlame 1.5s ease-in-out infinite alternate;
         }
 
-        .cracker-sparkles {
+        .diya-glow {
             position: absolute;
-            top: -20px;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 20px;
-        }
-
-        .cracker-sparkle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #FFD700;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle,
+                    rgba(255, 215, 0, 0.3) 0%,
+                    rgba(255, 165, 0, 0.2) 50%,
+                    transparent 100%);
             border-radius: 50%;
-            animation: crackerSparkle 2s ease-in-out infinite;
-            box-shadow: 0 0 6px #FFD700;
+            animation: ambientGlow 5s ease-in-out infinite;
         }
 
-        .cracker-sparkle:nth-child(1) { top: 6px; left: 10px; animation-delay: 0s; }
-        .cracker-sparkle:nth-child(2) { top: 4px; left: 20px; animation-delay: 0.5s; }
-        .cracker-sparkle:nth-child(3) { top: 8px; left: 30px; animation-delay: 1s; }
+        @keyframes diyaFloat {
 
-        @keyframes crackerSway {
-            0%, 100% { 
-                transform: translateY(0) rotate(-0.5deg); 
-                box-shadow:
-                    0 6px 20px rgba(0, 0, 0, 0.5),
-                    inset 0 4px 12px rgba(255, 255, 255, 0.3),
-                    inset 0 -4px 12px rgba(0, 0, 0, 0.4),
-                    0 0 20px rgba(255, 20, 147, 0.4);
+            0%,
+            100% {
+                transform: translateY(0px) rotateY(0deg);
             }
-            50% { 
-                transform: translateY(-8px) rotate(0.5deg); 
-                box-shadow:
-                    0 10px 30px rgba(0, 0, 0, 0.6),
-                    inset 0 6px 15px rgba(255, 255, 255, 0.4),
-                    inset 0 -6px 15px rgba(0, 0, 0, 0.5),
-                    0 0 30px rgba(255, 20, 147, 0.6);
+
+            50% {
+                transform: translateY(-12px) rotateY(5deg);
             }
         }
 
-        @keyframes crackerGlow {
-            0%, 100% { 
-                opacity: 0.4; 
+        @keyframes diyaGlow {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 20px 50px rgba(0, 0, 0, 0.6),
+                    inset 0 15px 35px rgba(255, 255, 255, 0.25),
+                    inset 0 -15px 30px rgba(0, 0, 0, 0.5),
+                    0 0 60px rgba(255, 165, 0, 0.7);
+            }
+
+            50% {
+                box-shadow:
+                    0 25px 60px rgba(0, 0, 0, 0.7),
+                    inset 0 20px 40px rgba(255, 255, 255, 0.3),
+                    inset 0 -20px 35px rgba(0, 0, 0, 0.6),
+                    0 0 80px rgba(255, 165, 0, 0.9);
+            }
+        }
+
+        @keyframes realisticFlame {
+            0% {
+                transform: translateX(-50%) scale(1) rotate(-3deg);
+                box-shadow:
+                    0 0 35px #FFD700,
+                    0 0 45px #FFA500,
+                    0 0 55px #FF6347,
+                    0 0 65px #DC143C;
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1.15) rotate(3deg);
+                box-shadow:
+                    0 0 45px #FFD700,
+                    0 0 55px #FFA500,
+                    0 0 65px #FF6347,
+                    0 0 75px #DC143C;
+            }
+        }
+
+        @keyframes innerFlame {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        @keyframes coreFlame {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1.4);
+                opacity: 1;
+            }
+        }
+
+        @keyframes oilShimmer {
+
+            0%,
+            100% {
+                opacity: 0.4;
                 transform: translateX(-50%) scale(1);
             }
-            50% { 
-                opacity: 0.7; 
+
+            50% {
+                opacity: 0.7;
                 transform: translateX(-50%) scale(1.1);
             }
         }
 
-        @keyframes crackerSparkle {
-            0%, 100% { 
-                opacity: 0; 
-                transform: translateY(0px) scale(0);
+        @keyframes ambientGlow {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translateX(-50%) scale(1);
             }
-            50% { 
-                opacity: 1; 
-                transform: translateY(-8px) scale(1);
+
+            50% {
+                opacity: 0.8;
+                transform: translateX(-50%) scale(1.2);
             }
         }
 
-        /* Family Message - Compact */
-        .family-message {
+        /* Enhanced Festive Cards */
+        .festive-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .festive-card {
+            background: linear-gradient(145deg, rgba(255, 107, 53, 0.25), rgba(255, 215, 0, 0.25));
+            border-radius: 25px;
+            padding: 40px 30px;
             text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
+            border: 3px solid rgba(255, 215, 0, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .family-message h2 {
+        .festive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .festive-card:hover::before {
+            left: 100%;
+        }
+
+        .festive-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.4);
+            border-color: rgba(255, 215, 0, 0.8);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .festive-card:nth-child(1) .card-icon {
+            animation-delay: 0s;
+        }
+
+        .festive-card:nth-child(2) .card-icon {
+            animation-delay: 0.5s;
+        }
+
+        .festive-card:nth-child(3) .card-icon {
+            animation-delay: 1s;
+        }
+
+        .festive-card:nth-child(4) .card-icon {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .card-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: #ffd700;
+            font-size: 1.5rem;
+            color: #FFD700;
             margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            animation: messageGlow 4s ease-in-out infinite;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
         }
 
-        .family-message p {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        .card-text {
             color: #ffffff;
             line-height: 1.6;
-            margin-bottom: 10px;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
 
-        .highlight {
-            color: #ff6b35;
-            font-weight: 600;
-            text-shadow: 0 0 12px rgba(255, 107, 53, 0.8);
-            animation: highlightPulse 3s ease-in-out infinite;
+        /* Enhanced Sequential Lights */
+        .lights-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 50px;
+            flex-wrap: wrap;
         }
 
-        @keyframes messageGlow {
-            0%, 100% { 
-                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        .light {
+            width: 50px;
+            height: 80px;
+            background: linear-gradient(180deg, #8B0000 0%, #FF4500 30%, #FFD700 70%, #FFFFFF 100%);
+            border-radius: 25px;
+            position: relative;
+            opacity: 0.2;
+            transition: all 0.6s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .light::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 12px;
+            background: radial-gradient(ellipse, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .light.lit {
+            opacity: 1;
+            box-shadow: 0 0 40px #FFD700, 0 5px 20px rgba(0, 0, 0, 0.4);
+            transform: scale(1.1);
+        }
+
+        .light.lit::before {
+            opacity: 1;
+            box-shadow: 0 0 20px #FFD700;
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: linear-gradient(135deg, #2D1B69 0%, #8B0000 50%, #2D1B69 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-diyas {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-diya {
+            width: 60px;
+            height: 50px;
+            background: linear-gradient(145deg, #8B4513, #A0522D, #CD853F);
+            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            position: relative;
+            animation: flicker 4s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-diya::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 15px;
+            background: radial-gradient(ellipse, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px #FFD700;
+            animation: flameFlicker 2.5s ease-in-out infinite alternate;
+        }
+
+        .footer-diya:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .footer-diya:nth-child(2) {
+            animation-delay: 0.8s;
+        }
+
+        .footer-diya:nth-child(3) {
+            animation-delay: 1.6s;
+        }
+
+        .footer-diya:nth-child(4) {
+            animation-delay: 2.4s;
+        }
+
+        .footer-diya:nth-child(5) {
+            animation-delay: 3.2s;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 0.7;
                 transform: scale(1);
             }
-            50% { 
-                text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 107, 53, 0.5);
-                transform: scale(1.01);
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
             }
         }
 
-        @keyframes highlightPulse {
-            0%, 100% { 
-                text-shadow: 0 0 12px rgba(255, 107, 53, 0.8);
+        .footer-text {
+            color: #FFD700;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+            margin-bottom: 20px;
+        }
+
+        .angara-branding {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Angara Logo */
+        .angara-logo {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            padding: 18px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            animation: logoFloat 5s ease-in-out infinite;
+        }
+
+        .angara-logo img {
+            height: 45px;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+            animation: logoGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
             }
-            50% { 
-                text-shadow: 0 0 20px rgba(255, 107, 53, 1), 0 0 25px rgba(255, 215, 0, 0.5);
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1));
             }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .angara-logo {
-                top: 15px;
-                right: 15px;
-                padding: 8px 15px;
+            .section-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .angara-logo img {
-                height: 25px;
-            }
-
-            .diyas-container {
+            .festive-cards {
+                grid-template-columns: 1fr;
                 gap: 25px;
             }
 
-            .diya {
-                width: 60px;
-                height: 45px;
+            .lights-container {
+                gap: 15px;
             }
 
-            .crackers-container {
-                gap: 18px;
+            .footer-diyas {
+                gap: 25px;
             }
 
-            .cracker {
-                width: 35px;
-                height: 70px;
-            }
-
-            .main-title::before,
-            .main-title::after {
+            .hero-title::before,
+            .hero-title::after {
                 display: none;
             }
         }
 
         @media (max-width: 480px) {
-            .main-container {
-                padding: 10px;
+            .content {
+                padding: 60px 15px;
             }
 
-            .header {
-                padding: 15px 0;
+            .section {
+                padding: 50px 25px;
+                margin: 80px 0;
             }
 
-            .diyas-container {
-                gap: 15px;
+            .lights-container {
+                gap: 10px;
             }
 
-            .crackers-container {
-                gap: 12px;
-            }
-
-            .center-content {
-                gap: 20px;
+            .light {
+                width: 35px;
+                height: 60px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="stars">
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-    </div>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
 
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="floating-diya"></div>
+        <div class="floating-diya"></div>
+        <div class="floating-diya"></div>
+        <div class="floating-diya"></div>
+        <div class="floating-diya"></div>
+        <div class="floating-diya"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
     </div>
 
     <!-- Angara Logo -->
@@ -774,141 +1069,286 @@
         <img src="angara-logo.svg" alt="Angara Logo">
     </div>
 
-    <!-- Main Container - Single Page -->
-    <div class="main-container">
-        <!-- Header -->
-        <header class="header">
-            <h1 class="main-title">Happy Diwali</h1>
-            <p class="subtitle">Angara Family Celebration</p>
-        </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">✨ Happy Diwali from Angara Family ✨</h1>
+        <p class="hero-subtitle">Celebrating the Festival of Lights with Joy and Prosperity</p>
+    </section>
 
-        <!-- Center Content -->
-        <div class="center-content">
-            <!-- Ultra-Realistic Diyas -->
-            <div class="diyas-container">
-                <div class="diya">
-                    <div class="diya-glow"></div>
-                    <div class="diya-body"></div>
-                    <div class="diya-wick"></div>
-                    <div class="diya-flame"></div>
-                    <div class="diya-sparkles">
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                    </div>
+    <!-- Content Sections -->
+    <div class="content">
+        <!-- About Diwali Section -->
+        <section class="section">
+            <h2 class="section-title">About Diwali</h2>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>Diwali, the Festival of Lights, is one of the most significant celebrations in Hindu culture. It
+                        symbolizes the victory of light over darkness, knowledge over ignorance, and good over evil.</p>
+                    <p>During this auspicious time, families come together to light diyas, share sweets, and create
+                        beautiful rangoli patterns. The warm glow of countless lamps illuminates homes and hearts,
+                        spreading joy and prosperity throughout the community.</p>
+                    <p>This festival represents the triumph of righteousness and the renewal of life, bringing families
+                        and communities together in celebration of hope, love, and spiritual enlightenment.</p>
                 </div>
-                <div class="diya">
+                <div class="glowing-diya">
                     <div class="diya-glow"></div>
-                    <div class="diya-body"></div>
-                    <div class="diya-wick"></div>
-                    <div class="diya-flame"></div>
-                    <div class="diya-sparkles">
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                    </div>
-                </div>
-                <div class="diya">
-                    <div class="diya-glow"></div>
-                    <div class="diya-body"></div>
-                    <div class="diya-wick"></div>
-                    <div class="diya-flame"></div>
-                    <div class="diya-sparkles">
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                    </div>
-                </div>
-                <div class="diya">
-                    <div class="diya-glow"></div>
-                    <div class="diya-body"></div>
-                    <div class="diya-wick"></div>
-                    <div class="diya-flame"></div>
-                    <div class="diya-sparkles">
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                    </div>
-                </div>
-                <div class="diya">
-                    <div class="diya-glow"></div>
-                    <div class="diya-body"></div>
-                    <div class="diya-wick"></div>
-                    <div class="diya-flame"></div>
-                    <div class="diya-sparkles">
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
-                        <div class="sparkle"></div>
+                    <div class="diya-body">
+                        <div class="diya-wick"></div>
+                        <div class="diya-flame"></div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Ultra-Realistic Crackers -->
-            <div class="crackers-container">
-                <div class="cracker">
-                    <div class="cracker-glow"></div>
-                    <div class="cracker-sparkles">
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                    </div>
+        <!-- Celebrate with Us Section -->
+        <section class="section">
+            <h2 class="section-title">Celebrate with Us</h2>
+            <div class="festive-cards">
+                <div class="festive-card">
+                    <div class="card-icon">🪔</div>
+                    <h3 class="card-title">Diyas</h3>
+                    <p class="card-text">Traditional clay lamps that bring warmth and light to our homes, symbolizing
+                        the victory of light over darkness.</p>
                 </div>
-                <div class="cracker">
-                    <div class="cracker-glow"></div>
-                    <div class="cracker-sparkles">
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                    </div>
+                <div class="festive-card">
+                    <div class="card-icon">🍬</div>
+                    <h3 class="card-title">Sweets</h3>
+                    <p class="card-text">Delicious traditional treats like ladoos, barfis, and kaju katli shared with
+                        loved ones during the festivities.</p>
                 </div>
-                <div class="cracker">
-                    <div class="cracker-glow"></div>
-                    <div class="cracker-sparkles">
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                    </div>
+                <div class="festive-card">
+                    <div class="card-icon">🎨</div>
+                    <h3 class="card-title">Rangoli</h3>
+                    <p class="card-text">Beautiful patterns created with colored powders, rice, and flowers to welcome
+                        prosperity and good fortune.</p>
                 </div>
-                <div class="cracker">
-                    <div class="cracker-glow"></div>
-                    <div class="cracker-sparkles">
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                    </div>
-                </div>
-                <div class="cracker">
-                    <div class="cracker-glow"></div>
-                    <div class="cracker-sparkles">
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                    </div>
-                </div>
-                <div class="cracker">
-                    <div class="cracker-glow"></div>
-                    <div class="cracker-sparkles">
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                        <div class="cracker-sparkle"></div>
-                    </div>
+                <div class="festive-card">
+                    <div class="card-icon">🕯️</div>
+                    <h3 class="card-title">Candles</h3>
+                    <p class="card-text">Modern candles adding elegance and warmth to the festive atmosphere, creating a
+                        magical ambiance.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Family Message -->
-        <div class="family-message">
-            <h2>🌟 <span class="highlight">Angara Family</span> wishes you a very Happy Diwali! 🌟</h2>
-            <p>May this festival of lights bring joy, prosperity, and happiness to your home.</p>
-            <p>Let's celebrate together with <span class="highlight">crackers</span>, <span class="highlight">diyas</span>, and lots of <span class="highlight">sweets</span>!</p>
-            <p>✨ May the divine light of Diwali illuminate your life with peace, love, and success! ✨</p>
-        </div>
+        <!-- Light up the World Section -->
+        <section class="section">
+            <h2 class="section-title">Light up the World</h2>
+            <div class="section-content">
+                <div class="section-text">
+                    <p>As we light each diya, we illuminate not just our homes but also our hearts. Each flame
+                        represents hope, love, and the eternal light that guides us through life's journey.</p>
+                    <p>Join us in spreading this light across the world, bringing joy, peace, and prosperity to all
+                        corners of the earth. Let the divine light of Diwali shine in every heart and home.</p>
+                    <p>Watch as these lights illuminate one by one, symbolizing how each act of kindness and love can
+                        brighten the world around us.</p>
+                </div>
+                <div class="lights-container">
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-diyas">
+                <div class="footer-diya"></div>
+                <div class="footer-diya"></div>
+                <div class="footer-diya"></div>
+                <div class="footer-diya"></div>
+                <div class="footer-diya"></div>
+            </div>
+            <p class="footer-text">Wishing you prosperity, love, and light</p>
+            <p class="angara-branding">✨ Angara Family ✨</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Custom Cursor with Trail
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Create enhanced cursor trail
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const trail = document.createElement('div');
+                    trail.className = 'cursor-trail';
+                    trail.style.left = e.clientX + 'px';
+                    trail.style.top = e.clientY + 'px';
+                    trail.style.animationDelay = (i * 0.1) + 's';
+                    document.body.appendChild(trail);
+
+                    setTimeout(() => {
+                        trail.remove();
+                    }, 1500);
+                }, i * 50);
+            }
+        });
+
+        // Smooth cursor movement
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Enhanced Sequential Light Animation
+        const lights = document.querySelectorAll('.light');
+        let currentLight = 0;
+        let isAnimating = false;
+
+        function lightUpNext() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            if (currentLight < lights.length) {
+                lights[currentLight].classList.add('lit');
+                currentLight++;
+                setTimeout(() => {
+                    isAnimating = false;
+                    lightUpNext();
+                }, 600);
+            } else {
+                setTimeout(() => {
+                    lights.forEach(light => light.classList.remove('lit'));
+                    currentLight = 0;
+                    isAnimating = false;
+                    setTimeout(lightUpNext, 3000);
+                }, 4000);
+            }
+        }
+
+        // Start light animation when section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isAnimating) {
+                    setTimeout(lightUpNext, 1000);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const lightsSection = document.querySelector('.lights-container').closest('.section');
+        observer.observe(lightsSection);
+
+        // Enhanced Diya Hover Effect
+        const diyas = document.querySelectorAll('.diya-flame, .footer-diya::before');
+        diyas.forEach(diya => {
+            diya.addEventListener('mouseenter', () => {
+                diya.style.filter = 'brightness(1.8) saturate(1.5)';
+                diya.style.transform = 'scale(1.2)';
+                diya.style.boxShadow = '0 0 50px #FFD700, 0 0 70px #FFA500';
+            });
+
+            diya.addEventListener('mouseleave', () => {
+                diya.style.filter = 'brightness(1) saturate(1)';
+                diya.style.transform = 'scale(1)';
+                diya.style.boxShadow = '';
+            });
+        });
+
+        // Enhanced Fireworks Animation
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + '%';
+            firework.style.top = Math.random() * 100 + '%';
+            firework.style.animationDelay = Math.random() * 2 + 's';
+            document.querySelector('.bg-elements').appendChild(firework);
+
+            setTimeout(() => {
+                firework.remove();
+            }, 4000);
+        }
+
+        // Create multiple fireworks
+        setInterval(() => {
+            for (let i = 0; i < 2; i++) {
+                setTimeout(createFirework, i * 500);
+            }
+        }, 5000);
+
+        // Add sparkle particles on click
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 8; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.width = '4px';
+                sparkle.style.height = '4px';
+                sparkle.style.background = '#FFD700';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '9999';
+                sparkle.style.boxShadow = '0 0 10px #FFD700';
+                sparkle.style.animation = `sparkleClick 1s ease-out forwards`;
+                document.body.appendChild(sparkle);
+
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            }
+        });
+
+        // Add sparkle click animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleClick {
+                0% { 
+                    opacity: 1; 
+                    transform: scale(0) rotate(0deg); 
+                }
+                50% { 
+                    opacity: 1; 
+                    transform: scale(1) rotate(180deg); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: scale(0.3) rotate(360deg) translateY(-50px); 
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-diya, .firework');
+
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add sound effect (muted by default)
+        const audio = new Audio();
+        audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT';
+        audio.volume = 0.3;
+        audio.loop = true;
+
+        // Uncomment to enable sound
+        // audio.play().catch(() => {});
+    </script>
 </body>
 
 </html>
